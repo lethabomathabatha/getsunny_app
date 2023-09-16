@@ -51,4 +51,52 @@ $RSAWEB_DropShadow: #FF8A00;
 .weather_temperature {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: -130px;
+}
+
+.weather_temp_number {
+    font-weight:400;
+    font-size: 130px;
+}
+
+.weather_temp_celcius {
+    font-weight:700;
+    font-size: 48px;
+    position: relative;
+    top: 100px;
+}
+
+.weather_details {
+    background: black;
+    // width: 100%;
+    color: $RSAWEB_Text_Red;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    position: relative;
+    top: -260px;
+    justify-content: space-around;
+}
+
+.weather_details_category {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather_category_value{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.weather_category_text {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.weather_details_icon {
+    height: 20px;
+    padding-bottom: 5px;
 }

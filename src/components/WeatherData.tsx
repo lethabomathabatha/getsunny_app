@@ -1,8 +1,12 @@
 // import { useState } from 'react';
-// import SearchOutlined from '@mui/icons-material/SearchOutlined';
-// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 // import '../App.scss';
 import '../components/WeatherData.scss'
+// import searchIcon from '../assets/icon_search.svg'
+import windIcon from '../assets/icon_wind.svg'
+import precipitationIcon from '../assets/icon_precipitation.svg'
+import visibilityIcon from '../assets/icon_visibility_large.svg'
+
+
 
 export default function WeatherData() {
 //   const [location, setLocation] = useState<string>('');
@@ -106,6 +110,29 @@ export default function WeatherData() {
         <p className='weather_temp_number'>29</p>
         <p className='weather_temp_celcius'>°C</p>
       </div>
+
+        {/* weather deatils section */}
+      <div className='weather_details'>
+        <div className='weather_details_category'>
+            <img src={windIcon} alt="wind icon" className='weather_details_icon'/>
+       
+            <span className='weather_category_value'>6km/h</span>
+            <span className='weather_category_text'>Wind</span>
+        </div>
+
+        <div className='weather_details_category'>
+            <img src={precipitationIcon} alt="precipitation icon" className='weather_details_icon'/>
+            <span className='weather_category_value'>80%</span>
+            <span className='weather_category_text'>Precipitation</span>
+        </div>
+
+        <div className='weather_details_category'>
+            <img src={visibilityIcon} alt="precipitation icon" className='weather_details_icon'/>
+            <span className='weather_category_value'>80km</span>
+            <span className='weather_category_text'>Visibility</span>
+        </div>
+      </div>
+
 
 
 
