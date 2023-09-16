@@ -8,8 +8,8 @@ export default function WeatherData() {
 //   const [location, setLocation] = useState<string>('');
 //   const [weatherInfo, setWeatherInfo] = useState<string | null>(null);
 //   const [formattedDate, setFormattedDate] = useState<string | null>(null);
-//   const apiKeyPositionstack = '8dffbdec1cdc02cc5b5e2cbfb62bdb69';
-//   const apiKeyOpenWeatherMap = '4d3cdd60814fc80ba5dc03352851748f';
+//   const apiKeyPositionstack = '';
+//   const apiKeyOpenWeatherMap = '';
 
 // console.log(apiKeyOpenWeatherMap)
 // console.log(apiKeyPositionstack)
