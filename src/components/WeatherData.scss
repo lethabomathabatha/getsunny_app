@@ -1,0 +1,54 @@
+
+$RSAWEB_Red: #FF5222;
+$RSAWEB_Orange: #FFC046;
+$RSAWEB_Text_Red: #FF9137;
+$RSAWEB_Text_Orange: #FFC046;
+$RSAWEB_DropShadow: #FF8A00;
+
+#root {
+    font-family: 'Inter', sans-serif;
+}
+
+.weather_data_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather_location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: space-around;
+
+}
+
+.location_name {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: capitalize;
+    width: 100%;
+    
+}
+
+.weather_info_date {
+    background: black;
+    color: $RSAWEB_Text_Orange;
+    padding: 8px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.weather_condition {
+    padding-top: 18px;
+    font-weight:500;
+    font-size: 18px;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.weather_temperature {
+    display: flex;
+    flex-direction: row;
+}
