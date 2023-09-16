@@ -4,8 +4,9 @@ import '../components/WeatherData.scss'
 // import searchIcon from '../assets/icon_search.svg'
 import windIcon from '../assets/icon_wind.svg'
 import precipitationIcon from '../assets/icon_precipitation.svg'
-import visibilityIcon from '../assets/icon_visibility_large.svg'
-
+import visibilityIcon from '../assets/icon_visibility.svg'
+import soundOnIcon from '../assets/icon_soundOn.svg'
+// import soundOffIcon from '../assets/icon_soundOff.svg'
 
 
 export default function WeatherData() {
@@ -94,8 +95,9 @@ export default function WeatherData() {
       
 
       <div className='weather_location'>
-        <p>S</p>
-        <p className='location_name'>location</p>
+        <img src={soundOnIcon} alt="sound icon" className='weather_sound_icon'/>
+
+        <p className='location_name'>Pretoria</p>
       </div>
 
       <div className='weather_date'>
