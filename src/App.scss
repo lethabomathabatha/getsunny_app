@@ -23,7 +23,7 @@ $RSAWEB_DropShadow: #FF8A00;
 
 
 body {
-    background: yellow no-repeat center center fixed;
+    background: black no-repeat center center fixed;
     background-size: cover;
     // display: flex;
     // flex-direction: column;
@@ -33,7 +33,7 @@ body {
 .app_body {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    // align-items: center;
     width: 100%;
     justify-content: flex-start; 
   }
@@ -62,21 +62,25 @@ body {
   
 }
 
+.sunny_large_icon {
+    width: 100%;
+}
 
 
 .main_container {
     border: 2px solid black;
     border-radius: 5rem 0rem 0rem 5rem;
     // max-width: 1300px;
-    height: 100vh;
+    height: 92vh;
     position: relative;
     // left: 30%;
     background: linear-gradient(45deg, $RSAWEB_Red 0%, $RSAWEB_Orange 100%)no-repeat center center fixed;
-    padding: 3rem;
+    padding-left: 3rem;
+    padding-top: 3rem;
 }
 
 .landing_container {
-    font-size: 35px;
+    font-size: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,16 +90,11 @@ body {
   }
 
 .landing_image {
-    position: relative;
-    top: 0px;
-    width: 30%;
+    width: 45%;
 }
 
 .landing_text {
- 
-    position: relative;
-    // top: 0%;
-    bottom: 100px;
+    padding: 1rem;
 }
 
 .landing_text_sub1 {
@@ -111,13 +110,14 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem;
 }
 
 .search_icon {
     background: black;
-    padding: 11px;
+    padding: 15px;
     border-radius: 360px;
-    height: 18px;
+    height: 30px;
     box-shadow: $RSAWEB_DropShadow 0px 0px 10px 1px;
 }
 
@@ -129,11 +129,12 @@ body {
     height: 39px;
     border-radius: 360px;
     border: none;
-    padding-left: 10px;
-    width: 100%;
+    padding-left: 20px;
+    width: 90%;
     font-weight: 500;
     font-size: 16px;
     box-shadow: $RSAWEB_DropShadow 0px 0px 10px 1px;
+
     // margin: 10px;
 }
 
