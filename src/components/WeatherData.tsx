@@ -6,6 +6,7 @@ import windIcon from '../assets/icon_wind.svg'
 import precipitationIcon from '../assets/icon_precipitation.svg'
 import visibilityIcon from '../assets/icon_visibility.svg'
 import soundOnIcon from '../assets/icon_soundOn.svg'
+import whiteSunIcon from '../assets/icon_sunny_small_white.svg'
 import Search from './Search';
 // import soundOffIcon from '../assets/icon_soundOff.svg'
 
@@ -94,7 +95,7 @@ export default function WeatherData() {
   return (
     <div className='main_container'>
       <Search   />
-      
+
     <div className='weather_data_container'> 
       <div className='weather_location'>
         <img src={soundOnIcon} alt="sound icon" className='weather_sound_icon'/>
@@ -108,6 +109,8 @@ export default function WeatherData() {
 
       <div className='weather_condition'>
         <span className=''>Sunny</span>
+        <img src={whiteSunIcon} alt="white sun icon" className='weather_details_icon'/>
+
       </div>
     
       <div className='weather_temperature'>
