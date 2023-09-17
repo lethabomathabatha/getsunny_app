@@ -30,31 +30,72 @@ body {
     align-items: center;
 }
 
+.app_body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start; 
+  }
+  
+  .background_content_body {
+    width: 100%;
+    max-width: 400px;
+    padding: 0%;
+    display: flex;
+    flex-direction: column;
+    background: black;
+  }
+  
+  .main_content_body {
+    flex-grow: 1; 
+    width: 100%;
+  }
+
+.background_container {
+    // max-width: 600px;
+    // border: 2px solid black;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+  
+}
+
+
+
 .main_container {
     border: 2px solid black;
     border-radius: 5rem 0rem 0rem 5rem;
-    max-width: 1300px;
+    // max-width: 1300px;
     height: 100vh;
     position: relative;
-    left: 30%;
+    // left: 30%;
     background: linear-gradient(45deg, $RSAWEB_Red 0%, $RSAWEB_Orange 100%)no-repeat center center fixed;
     padding: 3rem;
 }
 
+.landing_container {
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;
+    text-align: center;
+  }
+
 .landing_image {
     position: relative;
-    top: 130px;
-   
+    top: 0px;
+    width: 30%;
 }
 
 .landing_text {
-    text-align: center;
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 150px;
-    left: 0%;
+ 
+    position: relative;
+    // top: 0%;
+    bottom: 100px;
 }
 
 .landing_text_sub1 {
@@ -80,7 +121,7 @@ body {
     box-shadow: $RSAWEB_DropShadow 0px 0px 10px 1px;
 }
 
-// on click: remove the box-shadow and background color
+// ADD: on click: remove the box-shadow and background color
 
 .location_input {
     background: black;
@@ -109,7 +150,6 @@ body {
         border: none;
         // max-width: 1024px;
         height: 100vh;
-        // make the container stick to the right side of the page
         position: relative;
         left: 0%;
         top: 30%;
