@@ -1,19 +1,24 @@
 import { useState } from 'react';
-// import SearchOutlined from '@mui/icons-material/SearchOutlined';
-// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import searchIcon from '../assets/icon_search.svg'
+import searchIconBlack from '../assets/icon_search_black.svg'
+// import WeatherData from './WeatherData';
 import '../App.scss';
 
 export default function Search() {
   const [location, setLocation] = useState<string>('');
+  const [isInputFieldVisible, setIsInputFieldVisible] = useState<boolean>(false);
   const [weatherInfo, setWeatherInfo] = useState<string | null>(null);
   const [formattedDate, setFormattedDate] = useState<string | null>(null);
   const apiKeyPositionstack = '';
   const apiKeyOpenWeatherMap = '';
 
 
+  const handleSearchField = () => {
+    setIsInputFieldVisible(!isInputFieldVisible);
+  }
 
   const handleSearch = async () => {
+    console.log(apiKeyPositionstack)
     
     // convert data in degrees to compass direction to get wind direction
     function degreesToCompassDirection(degrees : number) {
@@ -53,18 +58,8 @@ export default function Search() {
         // display wind direction as compass direction
         const windDegree = weatherData.wind.deg; 
         const windDirection = degreesToCompassDirection(windDegree);
-         
 
-        // rather have this under return()
-        setWeatherInfo(`
-          Location: ${location}
-          <br>Temperature: ${temperature}°C
-          <br>Condition: ${description}
-          <br>Wind Speed: ${wind} km/h ${windDirection}
-          <br>Precipitation: ${humidity}% 
-          <br>Visibility: ${visibility} km
-          `);
-
+      
         // get current date as day of the week and month
         const currentDate = new Date();
         const year = currentDate.getFullYear();
@@ -76,87 +71,71 @@ export default function Search() {
         const newFormattedDate = `${dayOfWeek},  ${day} ${month} ${year}`;
         setFormattedDate(newFormattedDate);
 
+        const weatherInfoResults = `
+        Location: ${location}
+        Temperature: ${temperature}°C
+        Condition: ${description}
+        Wind Speed: ${wind} km/h ${windDirection}
+        Precipitation: ${humidity}%
+        Visibility: ${visibility} km
+        Date: ${formattedDate}
+      `;
+
+        setWeatherInfo(weatherInfoResults);
         } else {
             setWeatherInfo('Location not found.');
         }
     } catch (error) {
       console.error('Error:', error);
     }
+    
   };
 
   return (
     <div className='mobile-container'>
       
       <div className='search_container'>
-        <input
-          
-          className='location_input'
-          type="text"
-          id="locationInput"
-          placeholder="Enter a city or location" 
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}   
-        /> 
-        <img 
-          src={searchIcon} 
-          alt="sound icon" 
-          className='search_icon'
-          onClick={handleSearch}
-        />
-
-        
-
+      {isInputFieldVisible ? (
+          <>
+            <input
+              className='location_input'
+              type="text"
+              id="locationInput"
+              placeholder="Enter a city or location"
+              value={location}
+              style={{ height: '50px' }}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+            {/* Display the black search icon when input field is visible */}
+            <img
+              style={{ height: '40px' }}
+              onClick={handleSearch}
+              src={searchIconBlack}
+              alt="sound icon"
+              className='search_icon_black'
+            />
+          </>
+        ) : (
+          <>
+            {/* Display the white search icon when input field is not visible */}
+            <img
+              src={searchIcon}
+              alt="sound icon"
+              className='search_icon'
+              onClick={handleSearchField}
+              style={{ cursor: 'pointer' }}
+            />
+          </>
+        )}
       </div>
 
-      <div id="weatherInfoContainer">
-        {/* Render the weather information */}
+      <div className="weatherInfoContainer">
+        {/* render search results as h1 items */}
         {weatherInfo && (
-          <div className='weather_info'>
-            <p className='location_name'>{location}</p>
-            <p>{formattedDate}</p>
-            <div dangerouslySetInnerHTML={{ __html: weatherInfo }}></div>
-          </div>
+          <h1>{weatherInfo}</h1>
         )}
       </div>
       
-      
-      
-
-    
-        {/*
-            1. seperate search bar and weather info
-            2. place search functionality in Search.tsx and weather info in WeatherDetails.txs  
-        
-        */}
-      {/* <div className='weather_info'>
-        <p className='location_name'>{location}</p>
-        <p className='weather_info_date'>{formattedDate}</p>
-        <span className='weather_info_condition'>{description}</span>
-
-        <div className='weather_info_temperature'>
-            <span className='weather_info_temp_number'>{temperature}</span>
-            <span className='weather_info_temp_celcius'>{temperature}</span>
-        </div>
-
-        <div className='weather_info_conditions'>
-            <div className='weather_info_wind'>
-                <span className='weather_info_wind_speed'>{wind}{windDirection}</span>
-                <span className='weather_info_wind_text'>Wind</span>
-            </div> 
-
-            <div className='weather_info_precipitation'>
-                <span className='weather_info_precip_percentage'>{humidity}%</span>
-                <span className='weather_info_precip_text'>Precipitation</span>
-            </div> 
-
-            <div className='weather_info_visibility'>
-                <span className='weather_info_vis_distance'>{visibility} km</span>
-                <span className='weather_info_wind_text'>Wind</span>
-            </div> 
-        </div>
-      </div> */}
-
-
     </div>
   );
 }
