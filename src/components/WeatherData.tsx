@@ -1,11 +1,12 @@
 // import { useState } from 'react';
-// import '../App.scss';
+import '../App.scss';
 import '../components/WeatherData.scss'
 // import searchIcon from '../assets/icon_search.svg'
 import windIcon from '../assets/icon_wind.svg'
 import precipitationIcon from '../assets/icon_precipitation.svg'
 import visibilityIcon from '../assets/icon_visibility.svg'
 import soundOnIcon from '../assets/icon_soundOn.svg'
+import Search from './Search';
 // import soundOffIcon from '../assets/icon_soundOff.svg'
 
 
@@ -91,9 +92,10 @@ export default function WeatherData() {
 //   };
 
   return (
-    <div className='weather_data_container'>
+    <div className='main_container'>
+      <Search   />
       
-
+    <div className='weather_data_container'> 
       <div className='weather_location'>
         <img src={soundOnIcon} alt="sound icon" className='weather_sound_icon'/>
 
@@ -172,6 +174,7 @@ export default function WeatherData() {
       </div> */}
 
       
+    </div>
     </div>
   );
 }
