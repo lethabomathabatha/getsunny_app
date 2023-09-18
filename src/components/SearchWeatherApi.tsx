@@ -53,6 +53,7 @@ export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherA
 
     //  use results to render the weather data to the screen
        const weatherInfoResults = (
+        <>
         <div className='weather_data_container'> 
             <div className='weather_location'>
                 
@@ -94,6 +95,8 @@ export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherA
                 </div>
             </div>
         </div>
+
+        </>
       );
 
       setWeatherInfo(weatherInfoResults); 
