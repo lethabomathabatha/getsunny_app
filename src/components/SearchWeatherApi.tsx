@@ -4,7 +4,7 @@ import windIcon from '../assets/icon_wind.svg'
 import precipitationIcon from '../assets/icon_precipitation.svg'
 import visibilityIcon from '../assets/icon_visibility.svg'
 import searchIconBlack from '../assets/icon_search_black.svg';
-import landingImage from '../assets/Amigos - Outdoors.svg'
+import Landing from './Landing';
 import '../App.scss';
 
 
@@ -163,19 +163,7 @@ export default function SearchWeatherApi() {
           )
         ) : (
           // initial message before user performs a search
-          <div className='landing_container'>
-            <div className='landing_text'>
-              <span className='landing_text_sub1'>Don't get caught in the wind.</span>
-              <br />
-              <span className='landing_text_sub2'>Get Sunny.</span>
-            </div>
-
-            <img
-              src={landingImage}
-              alt="sound icon"
-              className='landing_image'
-            />
-          </div>
+          <Landing />
         )}
       </div>
     </div>
