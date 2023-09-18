@@ -16,7 +16,7 @@ $RSAWEB_DropShadow: #FF8A00;
 #root {
     font-family: 'Inter', sans-serif;
     // margin: 0 auto;
-    // padding: 1rem;
+    padding: 0.3rem;
     text-align: center;
     // max-width: 1350px;
 }
@@ -28,6 +28,9 @@ body {
     // display: flex;
     // flex-direction: column;
     align-items: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .app_body {
@@ -37,6 +40,10 @@ body {
     width: 100%;
     justify-content: flex-start; 
   }
+
+.app_greeting {
+    font-weight: 500;
+}
   
   .background_content_body {
     width: 100%;
@@ -52,31 +59,20 @@ body {
     width: 100%;
   }
 
-.background_container {
-    // max-width: 600px;
-    // border: 2px solid black;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-  
-}
-
 .sunny_large_icon {
     width: 100%;
 }
-
 
 .main_container {
     border: 2px solid black;
     border-radius: 5rem 0rem 0rem 5rem;
     // max-width: 1300px;
-    height: 92vh;
+    height: 85vh;
     position: relative;
     // left: 30%;
     background: linear-gradient(45deg, $RSAWEB_Red 0%, $RSAWEB_Orange 100%)no-repeat center center fixed;
-    padding-left: 3rem;
-    padding-top: 3rem;
+    padding: 3rem;
+  
 }
 
 .landing_container {
@@ -134,12 +130,15 @@ body {
     font-weight: 500;
     font-size: 16px;
     box-shadow: $RSAWEB_DropShadow 0px 0px 10px 1px;
-
     // margin: 10px;
 }
 
-
-
+.background_weather_location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
 
 // media query for screens smaller than tablet (max-width: 425px)
 @media screen and (max-width: 425px) {
@@ -147,15 +146,42 @@ body {
         background: linear-gradient(45deg, $RSAWEB_Red 0%, $RSAWEB_Orange 70%)no-repeat center center fixed;
     }
 
+  
     .main_container {
         border: none;
+        border-radius: 0rem;
         // max-width: 1024px;
-        height: 100vh;
+        width: 100%;
+        height: 0vh;
         position: relative;
         left: 0%;
-        top: 30%;
+        top: 0%;
+        border: none;
+        border-radius: 0rem;
+        padding: 0rem;
+        
     }
     
+    
+    .background_container {
+        display: none;
+    }
 
+    .background_content_body {
+        display: none;
+    }
+
+    .landing_container {
+        display: none;
+    }
+
+   
+ 
+    .weather_data_container {
+        justify-content: center;
+        align-items: center; 
+        flex-direction: column;
+        width: 100%;
+    }
     
 }
