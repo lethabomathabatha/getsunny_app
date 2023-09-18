@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import searchIcon from '../assets/icon_search.svg';
+import windIcon from '../assets/icon_wind.svg'
+import precipitationIcon from '../assets/icon_precipitation.svg'
+import visibilityIcon from '../assets/icon_visibility.svg'
 import searchIconBlack from '../assets/icon_search_black.svg';
 import '../App.scss';
+import '../components/WeatherData.scss'
 
-export default function SearchWeatherApi() {
+interface SearchWeatherApiProps {
+  onWeatherInfoChange: (weatherInfo: string | null, location: string | null) => void;
+}
+
+export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherApiProps) {
   const [location, setLocation] = useState<string>('');
   const [isInputFieldVisible, setIsInputFieldVisible] = useState<boolean>(false);
-  const [weatherInfo, setWeatherInfo] = useState<string | null>(null);
-  const [formattedDate, setFormattedDate] = useState<string | null>(null);
+  const [weatherInfo, setWeatherInfo] = useState<string | null>(null); 
+
   const apiKeyOpenWeatherMap = '4d3cdd60814fc80ba5dc03352851748f';
 
   const handleSearchField = () => {
@@ -30,7 +38,7 @@ export default function SearchWeatherApi() {
       const description = weatherData.weather[0].description;
       const wind = Math.round(weatherData.wind.speed);
       const humidity = weatherData.main.humidity;
-      const visibility = weatherData.visibility;
+      const visibility = weatherData.visibility / 1000;
       const windDegree = weatherData.wind.deg;
       const windDirection = degreesToCompassDirection(windDegree);
 
@@ -41,27 +49,68 @@ export default function SearchWeatherApi() {
       const dayOfWeek = currentDate.toLocaleString('default', { weekday: 'long' });
 
       const newFormattedDate = `${dayOfWeek},  ${day} ${month} ${year}`;
-      setFormattedDate(newFormattedDate);
 
-      const weatherInfoResults = `
-        Location: ${location}
-        Temperature: ${temperature}°C
-        Condition: ${description}
-        Wind Speed: ${wind} km/h ${windDirection}
-        Precipitation: ${humidity}%
-        Visibility: ${visibility} km
-        Date: ${newFormattedDate}
-      `;
 
-      setWeatherInfo(weatherInfoResults);
+    //  use results to render the weather data to the screen
+       const weatherInfoResults = (
+        <div className='weather_data_container'> 
+            <div className='weather_location'>
+                
+                <p className='location_name'>{location}</p>
+            </div>
+
+            <div className='weather_date'>
+                <span className='weather_info_date'>{newFormattedDate}</span>
+            </div>
+
+            <div className='weather_condition'>
+                <span className=''>{description}</span>
+            </div>
+    
+            <div className='weather_temperature'>
+                <p className='weather_temp_number'>{temperature}</p>
+                <p className='weather_temp_celcius'>°C</p>
+            </div>
+
+        
+            <div className='weather_details'>
+                <div className='weather_details_category'>
+                    <img src={windIcon} alt="wind icon" className='weather_details_icon'/>
+            
+                    <span className='weather_category_value'>{wind}km/h {windDirection}</span>
+                    <span className='weather_category_text'>Wind</span>
+                </div>
+
+                <div className='weather_details_category'>
+                    <img src={precipitationIcon} alt="precipitation icon" className='weather_details_icon'/>
+                    <span className='weather_category_value'>{humidity}%</span>
+                    <span className='weather_category_text'>Precipitation</span>
+                </div>
+
+                <div className='weather_details_category'>
+                    <img src={visibilityIcon} alt="precipitation icon" className='weather_details_icon'/>
+                    <span className='weather_category_value'>{visibility}km</span>
+                    <span className='weather_category_text'>Visibility</span>
+                </div>
+            </div>
+        </div>
+      );
+
+      setWeatherInfo(weatherInfoResults); 
+
+      // pass weather info to parent component
+      onWeatherInfoChange(weatherInfoResults, location);
     } catch (error) {
       console.error('Error:', error);
-      setWeatherInfo('Location not found or an error occurred.');
+
+    
     }
   };
 
   function degreesToCompassDirection(degrees: number) {
-    const compassDirections = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+    const compassDirections = [
+      'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'
+    ];
     const index = Math.round((degrees % 360) / 22.5);
     return compassDirections[(index + 16) % 16];
   }
