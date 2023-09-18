@@ -4,18 +4,19 @@ import windIcon from '../assets/icon_wind.svg'
 import precipitationIcon from '../assets/icon_precipitation.svg'
 import visibilityIcon from '../assets/icon_visibility.svg'
 import searchIconBlack from '../assets/icon_search_black.svg';
+import landingImage from '../assets/Amigos - Outdoors.svg'
 import '../App.scss';
-import '../components/WeatherData.scss'
 
-interface SearchWeatherApiProps {
-  onWeatherInfoChange: (weatherInfo: string | null, location: string | null) => void;
-}
 
-export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherApiProps) {
+// interface SearchWeatherApiProps {
+//   onWeatherInfoChange: (weatherInfo: string | null, location: string | null) => void;
+// }
+
+export default function SearchWeatherApi() {
   const [location, setLocation] = useState<string>('');
   const [isInputFieldVisible, setIsInputFieldVisible] = useState<boolean>(false);
   const [weatherInfo, setWeatherInfo] = useState<string | null>(null); 
-
+  const [searchPerformed, setSearchPerformed] = useState<boolean>(false);  
   const apiKeyOpenWeatherMap = '4d3cdd60814fc80ba5dc03352851748f';
 
   const handleSearchField = () => {
@@ -43,12 +44,11 @@ export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherA
       const windDirection = degreesToCompassDirection(windDegree);
 
       const currentDate = new Date();
-      const year = currentDate.getFullYear();
       const month = currentDate.toLocaleString('default', { month: 'long' });
       const day = currentDate.getDate();
       const dayOfWeek = currentDate.toLocaleString('default', { weekday: 'long' });
 
-      const newFormattedDate = `${dayOfWeek},  ${day} ${month} ${year}`;
+      const newFormattedDate = `${dayOfWeek},  ${day} ${month}`;
 
 
     //  use results to render the weather data to the screen
@@ -102,7 +102,8 @@ export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherA
       setWeatherInfo(weatherInfoResults); 
 
       // pass weather info to parent component
-      onWeatherInfoChange(weatherInfoResults, location);
+    //   onWeatherInfoChange(weatherInfoResults, location);
+      setSearchPerformed(true);
     } catch (error) {
       console.error('Error:', error);
 
@@ -153,9 +154,28 @@ export default function SearchWeatherApi({ onWeatherInfoChange }: SearchWeatherA
         )}
       </div>
 
-      <div className="weatherInfoContainer">
-        {weatherInfo && (
-          <pre>{weatherInfo}</pre>
+      <div className="weather_data_container">
+        {searchPerformed ? (
+          weatherInfo ? (
+            <>{weatherInfo}</>
+          ) : (
+            <div>Loading...</div>
+          )
+        ) : (
+          // initial message before user performs a search
+          <div className='landing_container'>
+            <div className='landing_text'>
+              <span className='landing_text_sub1'>Don't get caught in the wind.</span>
+              <br />
+              <span className='landing_text_sub2'>Get Sunny.</span>
+            </div>
+
+            <img
+              src={landingImage}
+              alt="sound icon"
+              className='landing_image'
+            />
+          </div>
         )}
       </div>
     </div>
