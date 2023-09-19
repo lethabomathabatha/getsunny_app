@@ -31,3 +31,7 @@ GetSunny is a weather forecast web app that allows you to look up the city to  y
 ### Neutrino geolocation api
 - required CORS resolution that became time-consuming
 
+
+## Figma
+https://www.figma.com/file/lBf4gBC6h9xbYubFrjit2S/GetSunny?type=design&node-id=0-1&mode=design&t=Zklhk9OUJOZljSvt-0
+
